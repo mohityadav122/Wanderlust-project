@@ -1,0 +1,107 @@
+
+<% layout("/layouts/boilerplate") %>
+ 
+    <!--<h2>ALL Listings</h2>-->
+    <!--because using bootystrap-->
+   <!-- <form method = "GET" action = "/listings/new">
+        <button>Create new Listing</button>
+    </form> -->
+    <style>
+      #filters{
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .filter{
+        text-align: center;
+        margin-right: 2rem;
+        margin-top: 2rem;
+        opacity: o.8;
+      }
+      .filter:hover{
+        opacity: 1;
+        cursor: pointer;
+      }
+      .filter p {
+        font-size: .8rem;
+      }
+      .tax-info{
+        display: none;
+      }
+    </style>
+    <div id = "filters">
+      <div class = "filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Treanding</p>
+      </div>
+      <div class = "filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+      </div>
+      <div class = "filter">
+        <div><i class="fa-solid fa-city"></i></div>
+        <p>Iconig city</p>
+      </div>
+      <div class = "filter">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Mountain city</p>
+      </div>
+      <div class = "filter">
+        <div><i class="fa-solid fa-tree"></i></div>
+        <p>Topical</p>
+      </div>
+      <div class = "filter">
+        <div><i class="fa-solid fa-mug-saucer"></i></div>
+        <p>Mug-saucer</p>
+      </div>
+      <div class = "filter">
+        <div><i class="fa-solid fa-ship"></i></div>
+        <p>Boat</p>
+      </div>
+      <div class = "filter">
+        <div><i class="fa-solid fa-bridge-water"></i></div>
+        <p>Bridge-Water</p>
+      </div>
+      <div class = "filter">
+        <div><i class="fa-solid fa-store"></i></div>
+        <p>Store</p>
+      </div>
+    
+    
+    
+
+    </div>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+       
+    <%for( let listing of allListings){ %>
+    <a href = "/listings/<%= listing._id%>" class ="listing-link">
+    <div class="card col listing-card">
+        <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+           <b> <%= listing.title%></b>
+            &#8377;<%=listing.price.toLocaleString("en-IN")%> / night
+            <i class= "tax-info">&nbsp;&nbsp;+18% GST</i>
+          </p>
+        </div>
+      </div>
+      <%}%>
+    </a>
+    </div>
+    
+     <!--  
+    <ul>
+        <%for( let listing of allListings){ %>
+            <li><a href = "/listings/<%= listing._id%>"> <%= listing.title%> </a></li>
+           
+            
+        <%}%>
+    </ul> -->
+
+<script >
+let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+taxSwitch.addEventListener("click",()=>{
+let taxInfo = document.getElementByClassName("tax-info");
+console.log(taxInfo);
+})
+</script>
